@@ -1,0 +1,22 @@
+{
+  "CMHV.AbilityStr": "Strength",
+  "CMHV.AbilityCon": "Constitution",
+  "CMHV.AbilityDex": "Dexterity",
+  "CMHV.AbilityInt": "Intelligence",
+  "CMHV.AbilityWis": "Wisdom",
+  "CMHV.AbilityCha": "Charisma",
+
+  "CMHV.AbilityStrAbbr": "str",
+  "CMHV.AbilityConAbbr": "con",
+  "CMHV.AbilityDexAbbr": "dex",
+  "CMHV.AbilityIntAbbr": "int",
+  "CMHV.AbilityWisAbbr": "wis",
+  "CMHV.AbilityChaAbbr": "cha",
+
+  "CMHV.EffectCreate": "Create Effect",
+  "CMHV.EffectToggle": "Toggle Effect",
+  "CMHV.EffectEdit": "Edit Effect",
+  "CMHV.EffectDelete": "Delete Effect",
+
+  "CMHV.Add": "Add"
+}

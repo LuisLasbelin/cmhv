@@ -1,0 +1,28 @@
+{
+  "name": "CMHV",
+  "title": "cmhv",
+  "description": "The cmhv system for FoundryVTT!",
+  "version": "0.1.0",
+  "minimumCoreVersion": "0.8.6",
+  "compatibleCoreVersion": "9",
+  "author": "Luis Lasbelin",
+  "esmodules": ["module/cmhv.mjs"],
+  "styles": ["css/cmhv.css"],
+  "scripts": [],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "power",
+  "url": "",
+  "manifest": "system.json",
+  "download": "",
+  "license": "LICENSE.txt"
+}
