@@ -1,0 +1,23 @@
+<div class="cmhv chat-card item-card" data-actor-id="{{actor._id}}" data-item-id="{{item._id}}">
+    <div class="align-left">
+        <img class="cmhv-chat-image" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="cmhv-chat-title">{{item.name}}</div>
+    </div>
+    
+    <div class="cmhv-inline-result">
+        <div class="cmhv-section-title">{{ localize "CMHV.Precission"}}</div>
+        <p class="item-formula">Total: <b>{{rollPrecission.total}}</b></p>
+        <p class="item-formula">Formula: d20 + {{ localize 'CMHV.AttributeBody' }} + Precission</p>
+        <p class="item-formula">Result: {{rollPrecission.result}}</p>
+    </div>
+    <div class="cmhv-inline-result">
+        <div class="cmhv-section-title">{{ localize "CMHV.Damage"}}</div>
+        <p class="item-formula">Total: <b>{{rollDamage.total}}</b></p>
+        <p class="item-formula">Formula: {{rollDamageJson.terms.[0].number}}d{{rollDamageJson.terms.[0].faces}} + {{ localize 'CMHV.AttributeBody'}}</p>
+        <p class="item-formula">Result: {{rollDamage.result}}</p>
+    </div>
+    <div class="cmhv-inline-result">
+        <div class="cmhv-section-title">{{ localize "CMHV.Description"}}</div>
+        {{{content}}}
+    </div>
+</div>

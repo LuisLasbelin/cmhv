@@ -1,22 +1,45 @@
 {
-  "CMHV.AbilityStr": "Strength",
-  "CMHV.AbilityCon": "Constitution",
-  "CMHV.AbilityDex": "Dexterity",
-  "CMHV.AbilityInt": "Intelligence",
-  "CMHV.AbilityWis": "Wisdom",
-  "CMHV.AbilityCha": "Charisma",
+  "CMHV.Stamina": "Stamina",
+  "CMHV.Health": "Health",
 
-  "CMHV.AbilityStrAbbr": "str",
-  "CMHV.AbilityConAbbr": "con",
-  "CMHV.AbilityDexAbbr": "dex",
-  "CMHV.AbilityIntAbbr": "int",
-  "CMHV.AbilityWisAbbr": "wis",
-  "CMHV.AbilityChaAbbr": "cha",
+  "CMHV.AttributeBody": "Body",
+  "CMHV.AttributeMind": "Mind",
+  "CMHV.AttributeSkill": "Skill",
+  "CMHV.AttributeWill": "Will",
+
+  "CMHV.Attributes": "Attributes",
+  "CMHV.Description": "Description",
+
+  "CMHV.Inventory": "Inventory",
+  "CMHV.Effects": "Effects",
+  "CMHV.ItemQuantity": "Quantity",
+  "CMHV.ItemWeight": "Weight",
+  "CMHV.ItemValue": "Value",
+
+  "CMHV.DamageType": "Damage type",
+  "CMHV.DamageRoll": "Damage roll",
+  "CMHV.isWeapon": "Weapon?",
+  "CMHV.DamageBlunt": "Blunt",
+  "CMHV.DamagePierce": "Piercing",
+  "CMHV.DamageSlash": "Slashing",
+
+  "CMHV.Spell": "Spell",
+  "CMHV.Spells": "Spells",
+  "CMHV.SpellDamage": "Potency",
+  "CMHV.Level": "Level",
+  "CMHV.SpellCircle": "Mágic circle",
+  "CMHV.SpellCircleLight": "Light",
+  "CMHV.SpellCircleDarkness": "Darkness",
+  "CMHV.SpellCircleDestruction": "Destruction",
+  "CMHV.SpellCircleInvocation": "Invocation",
 
   "CMHV.EffectCreate": "Create Effect",
   "CMHV.EffectToggle": "Toggle Effect",
   "CMHV.EffectEdit": "Edit Effect",
   "CMHV.EffectDelete": "Delete Effect",
+
+  "CMHV.Precission": "Precission",
+  "CMHV.Damage": "Damage",
 
   "CMHV.Add": "Add"
 }

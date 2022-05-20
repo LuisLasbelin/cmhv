@@ -1,0 +1,45 @@
+{
+    "CMHV.Stamina": "Aguante",
+    "CMHV.Health": "Vida",
+
+    "CMHV.AttributeBody": "Cuerpo",
+    "CMHV.AttributeMind": "Mente",
+    "CMHV.AttributeSkill": "Habilidad",
+    "CMHV.AttributeWill": "Voluntad",
+
+    "CMHV.Attributes": "Atributos",
+    "CMHV.Description": "Descripción",
+
+    "CMHV.Inventory": "Inventario",
+    "CMHV.Effects": "Efectos",
+    "CMHV.ItemQuantity": "Cantidad",
+    "CMHV.ItemWeight": "Peso",
+    "CMHV.ItemValue": "Valor",
+
+    "CMHV.DamageType": "Tipo de daño",
+    "CMHV.DamageRoll": "Tirada de daño",
+    "CMHV.isWeapon": "Arma?",
+    "CMHV.DamageBlunt": "Contundente",
+    "CMHV.DamagePierce": "Lacerante",
+    "CMHV.DamageSlash": "Cortante",
+
+    "CMHV.Spell": "Conjuro",
+    "CMHV.Spells": "Conjuros",
+    "CMHV.SpellDamage": "Potencia",
+    "CMHV.Level": "Nivel",
+    "CMHV.SpellCircle": "Círculo mágico",
+    "CMHV.SpellCircleLight": "Luz",
+    "CMHV.SpellCircleDarkness": "Oscuridad",
+    "CMHV.SpellCircleDestruction": "Destrucción",
+    "CMHV.SpellCircleInvocation": "Invocación",
+
+    "CMHV.EffectCreate": "Crear Efecto",
+    "CMHV.EffectToggle": "Alternar Efecto",
+    "CMHV.EffectEdit": "Editar Efecto",
+    "CMHV.EffectDelete": "Eliminar Efecto",
+
+    "CMHV.Precission": "Precisión",
+    "CMHV.Damage": "Daños",
+
+    "CMHV.Add": "Añadir"
+}

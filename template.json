@@ -8,10 +8,10 @@
           "min": 0,
           "max": 10
         },
-        "power": {
-          "value": 5,
+        "stamina": {
+          "value": 10,
           "min": 0,
-          "max": 5
+          "max": 10
         },
         "biography": ""
       }
@@ -23,24 +23,18 @@
           "value": 1
         }
       },
-      "abilities": {
-        "str": {
-          "value": 10
+      "build": {
+        "body": {
+          "value": 0
         },
-        "dex": {
-          "value": 10
+        "mind": {
+          "value": 0
         },
-        "con": {
-          "value": 10
+        "skill": {
+          "value": 0
         },
-        "int": {
-          "value": 10
-        },
-        "wis": {
-          "value": 10
-        },
-        "cha": {
-          "value": 10
+        "will": {
+          "value": 0
         }
       }
     },
@@ -54,20 +48,42 @@
     "templates": {
       "base": {
         "description": ""
+      },
+      "market": {
+        "quantity": 1,
+        "weight": 0,
+        "value": 0
+      },
+      "weapon": {
+        "isWeapon": false,
+        "precission": {
+          "value": 0
+        },
+        "damage": {
+          "value": "1d4"
+        },
+        "range": {
+          "value": 0,
+          "type": "melee"
+        },
+        "damageTypes": {
+          "slash": false,
+          "pierce": false,
+          "blunt": false
+        }
       }
     },
     "item": {
-      "templates": ["base"],
-      "quantity": 1,
-      "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+      "templates": ["base", "market", "weapon"]
     },
     "feature": {
       "templates": ["base"]
     },
     "spell": {
       "templates": ["base"],
-      "spellLevel": 1
+      "spellCircle": "Light",
+      "spellLevel": "1",
+      "spellDamage": "1d4"
     }
   }
 }

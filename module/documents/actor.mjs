@@ -24,7 +24,7 @@ export class CmhvActor extends Actor {
    * Augment the basic actor data with additional dynamic data. Typically,
    * you'll want to handle most of your calculated/derived data in this step.
    * Data calculated in this step should generally not exist in template.json
-   * (such as ability modifiers rather than ability scores) and should be
+   * (such as build modifiers rather than build scores) and should be
    * available both inside and outside of character sheets (such as if an actor
    * is queried and has a roll executed directly from it).
    */
@@ -47,12 +47,6 @@ export class CmhvActor extends Actor {
 
     // Make modifications to data here. For example:
     const data = actorData.data;
-
-    // Loop through ability scores, and add their modifiers to our sheet output.
-    for (let [key, ability] of Object.entries(data.abilities)) {
-      // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
-    }
   }
 
   /**
@@ -85,10 +79,10 @@ export class CmhvActor extends Actor {
   _getCharacterRollData(data) {
     if (this.data.type !== 'character') return;
 
-    // Copy the ability scores to the top level, so that rolls can use
+    // Copy the build scores to the top level, so that rolls can use
     // formulas like `@str.mod + 4`.
-    if (data.abilities) {
-      for (let [k, v] of Object.entries(data.abilities)) {
+    if (data.build) {
+      for (let [k, v] of Object.entries(data.build)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }

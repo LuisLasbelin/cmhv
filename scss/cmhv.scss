@@ -12,10 +12,11 @@
 @import 'global/grid';
 @import 'global/flex';
 
-/* Styles limited to boilerplate sheets */
-.boilerplate {
+/* Styles limited to cmhv sheets */
+.cmhv {
   @import 'components/forms';
   @import 'components/resource';
   @import 'components/items';
   @import 'components/effects';
+  @import 'components/chat';
 }

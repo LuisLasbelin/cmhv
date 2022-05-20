@@ -16,7 +16,7 @@
     padding-left: 5px;
     text-align: left;
     display: flex;
-    // font-size: 16px;
+    //font-size: 16px;
   }
 }
 
@@ -105,11 +105,30 @@
       font-size: 12px;
       text-align: center;
     }
-    .item-name {
+    .item-name { 
       padding-left: 5px;
       text-align: left;
       // font-size: 16px;
     }
+  }
+
+  // Subsection header
+  .items-subheader {
+    height: 28px;
+    margin: 2px 0 0 10px;
+    padding: 0;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.05);
+    border: $border-groove;
+    font-weight: bold;
+    > * {
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  .item-sub {
+    margin: 2px 0 0 10px;
   }
 }
 

@@ -1,23 +1,25 @@
 export const CMHV = {};
 
 /**
- * The set of Ability Scores used within the sytem.
+ * The set of build Scores used within the sytem.
  * @type {Object}
  */
- CMHV.abilities = {
-  "str": "CMHV.AbilityStr",
-  "dex": "CMHV.AbilityDex",
-  "con": "CMHV.AbilityCon",
-  "int": "CMHV.AbilityInt",
-  "wis": "CMHV.AbilityWis",
-  "cha": "CMHV.AbilityCha"
+CMHV.build = {
+  "body": "CMHV.AttributeBody",
+  "mind": "CMHV.AttributeMind",
+  "skill": "CMHV.AttributeSkill",
+  "will": "CMHV.AttributeWill"
 };
 
-CMHV.abilityAbbreviations = {
-  "str": "CMHV.AbilityStrAbbr",
-  "dex": "CMHV.AbilityDexAbbr",
-  "con": "CMHV.AbilityConAbbr",
-  "int": "CMHV.AbilityIntAbbr",
-  "wis": "CMHV.AbilityWisAbbr",
-  "cha": "CMHV.AbilityChaAbbr"
-};
+CMHV.damageType = {
+  "blunt": "CMHV.DamageBlunt",
+  "pierce": "CMHV.DamagePierce",
+  "slash": "CMHV.DamageSlash"
+}
+
+CMHV.spellCircle = {
+  'Light' : "CMHV.SpellCircleLight",
+  'Darkness' : "CMHV.SpellCircleDarkness",
+  'Destruction' : "CMHV.SpellCircleDestruction",
+  'Invocation' : "CMHV.SpellCircleInvocation"
+}
