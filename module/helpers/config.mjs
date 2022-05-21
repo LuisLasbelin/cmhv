@@ -24,6 +24,21 @@ CMHV.spellCircle = {
   'Invocation' : "CMHV.SpellCircleInvocation"
 }
 
+CMHV.spellDomain = {
+  'Bless': "CMHV.SpellDomainBless",
+  'Abjuration': "CMHV.SpellDomainAbjuration",
+  'Wrath': "CMHV.SpellDomainWrath",
+  "Hex": "CMHV.SpellDomainHex",
+  "Mind": "CMHV.SpellDomainMind",
+  "Pain": "CMHV.SpellDomainPain",
+  "Fire": "CMHV.SpellDomainFire",
+  "Ice": "CMHV.SpellDomainIce",
+  "Storm": "CMHV.SpellDomainStorm",
+  "Life": "CMHV.SpellDomainLife",
+  "Earth": "CMHV.SpellDomainEarth",
+  "Elemental": "CMHV.SpellDomainElemental"
+}
+
 CMHV.rangeType = {
   'melee' : "CMHV.Melee",
   'ranged' : "CMHV.Ranged"

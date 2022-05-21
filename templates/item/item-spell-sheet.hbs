@@ -36,7 +36,15 @@
         <select name="data.spellCircle">
           {{#select data.spellCircle}}
             {{#each spellCircles as |circle spellCircle|}}
-              <option value="{{ spellCircle }}">{{ localize circle }}</option>
+              <option value="{{ spellCircle }}">{{ localize circle.name }}</option>
+            {{/each}}
+          {{/select}}
+        </select>
+        <label class="resource-label">{{localize 'CMHV.SpellDomain'}}</label>
+        <select name="data.spellDomain">
+          {{#select data.spellDomain}}
+            {{#each spellDomains as |domain spellDomain|}}
+              <option value="{{ spellDomain }}">{{ localize domain }}</option>
             {{/each}}
           {{/select}}
         </select>

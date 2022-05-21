@@ -69,15 +69,47 @@ export class CmhvItemSheet extends ItemSheet {
   _prepareItems(context) {
     // Prepare item data.
 
-
-    if(context.type = "spell"){
+    console.log(context.item.data.type)
+    if(context.item.data.type === "spell") {
       const spellCircles = {
-        "Light" : context.config.spellCircle["Light"],
-        "Darkness" : context.config.spellCircle["Darkness"],
-        "Destruction" : context.config.spellCircle["Destruction"],
-        "Invocation" : context.config.spellCircle["Invocation"]
-      }
-      
+        "Light" : {
+          name: context.config.spellCircle["Light"],
+          domains: {
+            "Bless": context.config.spellDomain["Bless"],
+            "Abjuration": context.config.spellDomain["Abjuration"],
+            "Wrath": context.config.spellDomain["Wrath"]
+          }
+        },
+        "Darkness" : {
+          name: context.config.spellCircle["Darkness"],
+          domains: {
+            "Hex": context.config.spellDomain["Hex"],
+            "Mind": context.config.spellDomain["Mind"],
+            "Pain": context.config.spellDomain["Pain"]
+          }
+        },
+        "Destruction" : {
+          name: context.config.spellCircle["Destruction"],
+          domains: {
+            "Ice": context.config.spellDomain["Ice"],
+            "Fire": context.config.spellDomain["Fire"],
+            "Storm": context.config.spellDomain["Storm"]
+          }
+        },
+        "Invocation" : {
+          name: context.config.spellCircle["Invocation"],
+          domains: {
+            "Life": context.config.spellDomain["Life"],
+            "Earth": context.config.spellDomain["Earth"],
+            "Elemental": context.config.spellDomain["Elemental"]
+          }
+        }
+      } // json end
+
+      context.spellDomains = spellCircles[context.item.data.data.spellCircle].domains;
+
+      console.log(context.spellDomains);
+
       // Adds data to the .hbs to use
       context.spellCircles = spellCircles;      
     }

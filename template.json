@@ -83,7 +83,8 @@
       "templates": ["base"],
       "spellCircle": "Light",
       "spellLevel": "1",
-      "spellDamage": "1d4"
+      "spellDamage": "1d4",
+      "spellDomain": "Bless"
     }
   }
 }

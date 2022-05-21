@@ -142,6 +142,10 @@ export class CmhvActorSheet extends ActorSheet {
       }
     }
 
+    // Health calculation and stamina
+    context.data.health.max = 5 + context.data.build.body.value;
+    context.data.stamina.max = 5 + context.data.build.body.value * context.data.attributes.level.value;
+
     // Assign and return
     context.gear = gear;
     context.features = features;
