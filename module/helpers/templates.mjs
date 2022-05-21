@@ -7,9 +7,10 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/cmhv/templates/actor/parts/actor-features.html",
-    "systems/cmhv/templates/actor/parts/actor-items.html",
-    "systems/cmhv/templates/actor/parts/actor-spells.html",
-    "systems/cmhv/templates/actor/parts/actor-effects.html",
+    "systems/cmhv/templates/actor/parts/actor-features.hbs",
+    "systems/cmhv/templates/actor/parts/actor-items.hbs",
+    "systems/cmhv/templates/actor/parts/actor-spells.hbs",
+    "systems/cmhv/templates/actor/parts/actor-effects.hbs",
+    "systems/cmhv/templates/actor/parts/actor-knowledge.hbs",
   ]);
 };

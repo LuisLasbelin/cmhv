@@ -14,7 +14,7 @@
         and it will add a small amount of padding, a border, and will
         center all of its child elements content and text. --}}
         <div class="resource flex-group-center">
-          <label for="data.health.value" class="resource-label">Health</label>
+          <label for="data.health.value" class="resource-label">{{localize 'CMHV.Health'}}</label>
           <div class="resource-content flexrow flex-center flex-between">
           <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
           <span> / </span>
@@ -23,16 +23,16 @@
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.power.value" class="resource-label">Power</label>
+          <label for="data.stamina.value" class="resource-label">{{localize 'CMHV.Stamina'}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.power.value" value="{{data.power.value}}" data-dtype="Number"/>
+          <input type="text" name="data.stamina.value" value="{{data.stamina.value}}" data-dtype="Number"/>
           <span> / </span>
-          <input type="text" name="data.power.max" value="{{data.power.max}}" data-dtype="Number"/>
+          <input type="text" name="data.stamina.max" value="{{data.stamina.max}}" data-dtype="Number"/>
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.attributes.level.value" class="resource-label">Level</label>
+          <label for="data.attributes.level.value" class="resource-label">{{localize 'CMHV.Level'}}</label>
           <div class="resource-content flexrow flex-center flex-between">
           <input type="text" name="data.attributes.level.value" value="{{data.attributes.level.value}}" data-dtype="Number"/>
           </div>
@@ -45,11 +45,12 @@
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
     {{!-- Default tab is specified in actor-sheet.mjs --}}
-    <a class="item" data-tab="features">Features</a>
-    <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="items">Items</a>
-    <a class="item" data-tab="spells">Spells</a>
-    <a class="item" data-tab="effects">Effects</a>
+    <a class="item" data-tab="features">{{localize 'CMHV.Attributes'}}</a>
+    <a class="item" data-tab="description">{{localize 'CMHV.Description'}}</a>
+    <a class="item" data-tab="items">{{localize "CMHV.Inventory"}}</a>
+    <a class="item" data-tab="spells">{{localize 'CMHV.Spells'}}</a>
+    <a class="item" data-tab="knowledge">{{localize 'CMHV.Knowledge'}}</a>
+    <a class="item" data-tab="effects">{{localize "CMHV.Effects"}}</a>
   </nav>
 
   {{!-- Sheet Body --}}
@@ -63,12 +64,11 @@
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities flexcol">
-            {{#each data.abilities as |ability key|}}
-            <div class="ability flexrow flex-group-center">
-              <label for="data.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{ability.label}}">{{ability.label}}</label>
-              <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-              <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{ability.label}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+          <div class="builds flexcol">
+            {{#each data.build as |build key|}}
+            <div class="build flexrow flex-group-center">
+              <label for="data.build.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@build.{{key}}.value" data-label="{{build.label}}">{{build.label}}</label>
+              <input type="text" name="data.build.{{key}}.value" value="{{build.value}}" data-dtype="Number"/>
             </div>
             {{/each}}
           </div>
@@ -77,7 +77,7 @@
         {{!-- For the main features list, span the right two columns --}}
         <section class="main grid-span-2">
           {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
-          {{> "systems/boilerplate/templates/actor/parts/actor-features.html"}}
+          {{> "systems/cmhv/templates/actor/parts/actor-features.hbs"}}
         </section>
 
       </section>
@@ -91,17 +91,22 @@
 
     {{!-- Owned Items Tab --}}
     <div class="tab items" data-group="primary" data-tab="items">
-       {{> "systems/boilerplate/templates/actor/parts/actor-items.html"}}
+       {{> "systems/cmhv/templates/actor/parts/actor-items.hbs"}}
     </div>
 
     {{!-- Owned Spells Tab --}}
     <div class="tab spells" data-group="primary" data-tab="spells">
-      {{> "systems/boilerplate/templates/actor/parts/actor-spells.html"}}
+      {{> "systems/cmhv/templates/actor/parts/actor-spells.hbs"}}
+    </div>
+
+    {{!-- Known Knowledge Tab --}}
+    <div class="tab knowledge" data-group="primary" data-tab="knowledge">
+      {{> "systems/cmhv/templates/actor/parts/actor-knowledge.hbs"}}
     </div>
 
     {{!-- Active Effects Tab --}}
     <div class="tab effects flexcol" data-group="primary" data-tab="effects">
-      {{> "systems/boilerplate/templates/actor/parts/actor-effects.html"}}
+      {{> "systems/cmhv/templates/actor/parts/actor-effects.hbs"}}
     </div>
 
   </section>

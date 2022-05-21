@@ -228,7 +228,7 @@
   /* ----------------------------------------- */
   /*  Items Lists                              */
   /* ----------------------------------------- */
-  /* Example style for Cmhv (can be removed if not needed) */
+  /* Example style for Boilerplate (can be removed if not needed) */
 }
 
 .cmhv .item-form {
@@ -278,7 +278,7 @@
 
 .cmhv .sheet-header h1.charname input {
   width: 100%;
-  height: 100%;
+  height: 75%;
   margin: 0;
 }
 
@@ -304,6 +304,14 @@
 
 .cmhv .resource-label {
   font-weight: bold;
+}
+
+.cmhv .resource {
+  margin-bottom: 1em;
+}
+
+.cmhv .cmhv-input-text {
+  width: 200px;
 }
 
 .cmhv .items-header {
@@ -442,6 +450,27 @@
   text-align: left;
 }
 
+.cmhv .items-list .items-subheader {
+  height: 28px;
+  margin: 2px 0 0 10px;
+  padding: 0;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  font-weight: bold;
+}
+
+.cmhv .items-list .items-subheader > * {
+  font-size: 12px;
+  text-align: center;
+}
+
+.cmhv .items-list .item-sub {
+  margin: 2px 0 0 10px;
+}
+
 .cmhv .item-formula {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 200px;
@@ -460,4 +489,52 @@
 
 .cmhv .effects .item .effect-controls {
   border: none;
+}
+
+.cmhv .cmhv-inline-result {
+  border: 1px solid grey;
+}
+
+.cmhv .cmhv-section-title {
+  background-color: grey;
+  color: lightgray;
+}
+
+.cmhv .cmhv-section-title-red {
+  background-color: brown;
+  color: lightgray;
+}
+
+.cmhv .cmhv-inline-result-red {
+  border: 1px solid brown;
+}
+
+.cmhv .cmhv-section-title-gold {
+  background-color: goldenrod;
+  color: black;
+}
+
+.cmhv .cmhv-inline-result-gold {
+  border: 1px solid goldenrod;
+}
+
+.cmhv .cmhv-section-title-azure {
+  background-color: #61a7ed;
+  color: black;
+}
+
+.cmhv .cmhv-inline-result-azure {
+  border: 1px solid #61a7ed;
+}
+
+.cmhv .cmhv-chat-image {
+  border-radius: 15%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.cmhv .cmhv-chat-title {
+  font-size: medium;
+  width: 100%;
 }

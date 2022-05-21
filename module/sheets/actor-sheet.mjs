@@ -1,4 +1,5 @@
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
+import {CMHV} from "../helpers/config.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -10,7 +11,7 @@ export class CmhvActorSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["cmhv", "sheet", "actor"],
-      template: "systems/cmhv/templates/actor/actor-sheet.html",
+      template: "systems/cmhv/templates/actor/actor-sheet.hbs",
       width: 600,
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
@@ -19,7 +20,7 @@ export class CmhvActorSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    return `systems/cmhv/templates/actor/actor-${this.actor.data.type}-sheet.html`;
+    return `systems/cmhv/templates/actor/actor-${this.actor.data.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */
@@ -38,6 +39,8 @@ export class CmhvActorSheet extends ActorSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.data = actorData.data;
     context.flags = actorData.flags;
+
+    console.log(context);
 
     // Prepare character data and items.
     if (actorData.type == 'character') {
@@ -67,9 +70,9 @@ export class CmhvActorSheet extends ActorSheet {
    * @return {undefined}
    */
   _prepareCharacterData(context) {
-    // Handle ability scores.
-    for (let [k, v] of Object.entries(context.data.abilities)) {
-      v.label = game.i18n.localize(CONFIG.cmhv.abilities[k]) ?? k;
+    // Handle build names.
+    for (let [k, v] of Object.entries(context.data.build)) {
+      v.label = game.i18n.localize(CONFIG.CMHV.build[k]) ?? k;
     }
   }
 
@@ -85,17 +88,40 @@ export class CmhvActorSheet extends ActorSheet {
     const gear = [];
     const features = [];
     const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
+      'Light': {
+        name: game.i18n.localize('CMHV.SpellCircleLight'),
+        levels: {
+          1: [],
+          2: [],
+          3: []
+        }
+      },
+      'Darkness': {
+        name: game.i18n.localize('CMHV.SpellCircleDarkness'),
+        levels: {
+          1: [],
+          2: [],
+          3: []
+        }
+      },
+      'Destruction': {
+        name: game.i18n.localize('CMHV.SpellCircleDestruction'),
+        levels: {
+          1: [],
+          2: [],
+          3: []
+        }
+      },
+      'Invocation': {
+        name: game.i18n.localize('CMHV.SpellCircleInvocation'),
+        levels: {
+          1: [],
+          2: [],
+          3: []
+        }
+      }
     };
+    const knowledge = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -110,9 +136,13 @@ export class CmhvActorSheet extends ActorSheet {
       }
       // Append to spells.
       else if (i.type === 'spell') {
-        if (i.data.spellLevel != undefined) {
-          spells[i.data.spellLevel].push(i);
+        if (i.data.spellLevel != undefined && i.data.spellCircle != undefined) {
+          let circle = spells[i.data.spellCircle];
+          circle.levels[i.data.spellLevel].push(i);
         }
+      }
+      else if (i.type === 'knowledge') {
+        knowledge.push(i);
       }
     }
 
@@ -120,16 +150,18 @@ export class CmhvActorSheet extends ActorSheet {
     context.gear = gear;
     context.features = features;
     context.spells = spells;
+    context.knowledge = knowledge;
+    context.CMHV = CMHV;
   }
 
   /* -------------------------------------------- */
 
   /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
+  activateListeners(hbs) {
+    super.activateListeners(hbs);
 
     // Render the item sheet for viewing/editing prior to the editable check.
-    html.find('.item-edit').click(ev => {
+    hbs.find('.item-edit').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.sheet.render(true);
@@ -140,10 +172,10 @@ export class CmhvActorSheet extends ActorSheet {
     if (!this.isEditable) return;
 
     // Add Inventory Item
-    html.find('.item-create').click(this._onItemCreate.bind(this));
+    hbs.find('.item-create').click(this._onItemCreate.bind(this));
 
     // Delete Inventory Item
-    html.find('.item-delete').click(ev => {
+    hbs.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.delete();
@@ -151,15 +183,15 @@ export class CmhvActorSheet extends ActorSheet {
     });
 
     // Active Effect management
-    html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
+    hbs.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
 
     // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this));
+    hbs.find('.rollable').click(this._onRoll.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
       let handler = ev => this._onDragStart(ev);
-      html.find('li.item').each((i, li) => {
+      hbs.find('li.item').each((i, li) => {
         if (li.classList.contains("inventory-header")) return;
         li.setAttribute("draggable", true);
         li.addEventListener("dragstart", handler, false);
@@ -215,7 +247,7 @@ export class CmhvActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+      let label = dataset.label ? `[build] ${dataset.label}` : '';
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),

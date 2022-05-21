@@ -1,0 +1,58 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description">{{localize 'CMHV.Description'}}</a>
+    <a class="item" data-tab="attributes">{{localize 'CMHV.Attributes'}}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Description Tab --}}
+    <div class="tab" data-group="primary" data-tab="description">
+      {{editor content=data.description target="data.description" rollData=rollData button=true owner=owner editable=editable}}
+    </div>
+
+    {{!-- Attributes Tab --}}
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      {{!-- As you add new fields, add them in here! --}}
+      <div class="resource">
+        <label class="resource-label">{{localize 'CMHV.Level'}}</label>
+        <select name="data.spellLevel">
+          {{#select data.spellLevel}}
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+          {{/select}}
+        </select>
+        <label class="resource-label">{{localize 'CMHV.SpellCircle'}}</label>
+        <select name="data.spellCircle">
+          {{#select data.spellCircle}}
+            {{#each spellCircles as |circle spellCircle|}}
+              <option value="{{ spellCircle }}">{{ localize circle.name }}</option>
+            {{/each}}
+          {{/select}}
+        </select>
+        <label class="resource-label">{{localize 'CMHV.SpellDomain'}}</label>
+        <select name="data.spellDomain">
+          {{#select data.spellDomain}}
+            {{#each spellDomains as |domain spellDomain|}}
+              <option value="{{ spellDomain }}">{{ localize domain }}</option>
+            {{/each}}
+          {{/select}}
+        </select>
+      </div>
+      <div class="resource">
+        <label class="resource-label">{{localize 'CMHV.SpellDamage'}}</label>
+        <input class="cmhv-input-text" type="text" name="data.spellDamage" value="{{data.spellDamage}}" data-dtype="String"/>
+      </div>
+    </div>
+  </section>
+</form>

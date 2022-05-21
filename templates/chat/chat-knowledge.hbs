@@ -1,0 +1,15 @@
+<div class="cmhv chat-card item-card" data-actor-id="{{actor._id}}" data-item-id="{{item._id}}">
+    <div class="align-left">
+        <img class="cmhv-chat-image" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="cmhv-chat-title">{{item.name}}</div>
+    </div>
+    {{#if description}}
+    <div class="cmhv-inline-result-azure">
+        <div class="cmhv-section-title-azure">{{ localize "CMHV.Description"}}</div>
+        {{{ description }}}
+    </div>
+    {{/if}}
+    <div class="cmhv-inline-result-azure">
+        <p class="item-formula">{{localize 'CMHV.Level'}}: {{level}}</p>
+    </div>
+</div>

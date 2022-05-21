@@ -1,3 +1,5 @@
+import {CMHV} from "../helpers/config.mjs";
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -10,7 +12,11 @@ export class CmhvItemSheet extends ItemSheet {
       classes: ["cmhv", "sheet", "item"],
       width: 520,
       height: 480,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
+      tabs: [{
+        navSelector: ".sheet-tabs",
+        contentSelector: ".sheet-body",
+        initial: "description"
+      }]
     });
   }
 
@@ -18,11 +24,11 @@ export class CmhvItemSheet extends ItemSheet {
   get template() {
     const path = "systems/cmhv/templates/item";
     // Return a single sheet for all item types.
-    // return `${path}/item-sheet.html`;
+    // return `${path}/item-sheet.hbs`;
 
     // Alternatively, you could use the following return statement to do a
-    // unique item sheet by type, like `weapon-sheet.html`.
-    return `${path}/item-${this.item.data.type}-sheet.html`;
+    // unique item sheet by type, like `weapon-sheet.hbs`.
+    return `${path}/item-${this.item.data.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */
@@ -37,7 +43,7 @@ export class CmhvItemSheet extends ItemSheet {
 
     // Retrieve the roll data for TinyMCE editors.
     context.rollData = {};
-    let actor = this.object?.parent ?? null;
+    let actor = this.object ?.parent ?? null;
     if (actor) {
       context.rollData = actor.getRollData();
     }
@@ -45,15 +51,76 @@ export class CmhvItemSheet extends ItemSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.data = itemData.data;
     context.flags = itemData.flags;
+    context.config = CMHV;
+
+    this._prepareItems(context);
 
     return context;
+  }
+
+
+  /**
+   * Add item data to show.
+   *
+   * @param {Object} actorData The actor to prepare.
+   *
+   * @return {undefined}
+   */
+  _prepareItems(context) {
+    // Prepare item data.
+
+    console.log(context.item.data.type)
+    if(context.item.data.type === "spell") {
+      const spellCircles = {
+        "Light" : {
+          name: context.config.spellCircle["Light"],
+          domains: {
+            "Bless": context.config.spellDomain["Bless"],
+            "Abjuration": context.config.spellDomain["Abjuration"],
+            "Wrath": context.config.spellDomain["Wrath"]
+          }
+        },
+        "Darkness" : {
+          name: context.config.spellCircle["Darkness"],
+          domains: {
+            "Hex": context.config.spellDomain["Hex"],
+            "Mind": context.config.spellDomain["Mind"],
+            "Pain": context.config.spellDomain["Pain"]
+          }
+        },
+        "Destruction" : {
+          name: context.config.spellCircle["Destruction"],
+          domains: {
+            "Ice": context.config.spellDomain["Ice"],
+            "Fire": context.config.spellDomain["Fire"],
+            "Storm": context.config.spellDomain["Storm"]
+          }
+        },
+        "Invocation" : {
+          name: context.config.spellCircle["Invocation"],
+          domains: {
+            "Life": context.config.spellDomain["Life"],
+            "Earth": context.config.spellDomain["Earth"],
+            "Elemental": context.config.spellDomain["Elemental"]
+          }
+        }
+      } // json end
+
+      context.spellDomains = spellCircles[context.item.data.data.spellCircle].domains;
+
+      console.log(context.spellDomains);
+
+      // Adds data to the .hbs to use
+      context.spellCircles = spellCircles;      
+    }
+
   }
 
   /* -------------------------------------------- */
 
   /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
+  activateListeners(hbs) {
+    super.activateListeners(hbs);
 
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
