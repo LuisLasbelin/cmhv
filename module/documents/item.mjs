@@ -9,7 +9,9 @@ export class CmhvItem extends Item {
     "weapon": "systems/cmhv/templates/chat/chat-weapon.hbs",
     "spell": "systems/cmhv/templates/chat/chat-spell.hbs",
     "item": "systems/cmhv/templates/chat/chat-item.hbs",
-    "knowledge": "systems/cmhv/templates/chat/chat-knowledge.hbs"
+    "knowledge": "systems/cmhv/templates/chat/chat-knowledge.hbs",
+    "feature": "systems/cmhv/templates/chat/chat-feature.hbs"
+
   };
 
   /**
@@ -117,6 +119,15 @@ export class CmhvItem extends Item {
       chatData.level = item.data.knowledgeLevel;
 
       chatData.content = await renderTemplate(this.chatTemplate["knowledge"], chatData);
+
+      // Play rolling sound
+      AudioHelper.play({src: 'sounds/lock.wav', volume: 0.8, loop: false}, true);
+
+      return ChatMessage.create(chatData);
+    }
+    if(this.data.type === "feature") {
+
+      chatData.content = await renderTemplate(this.chatTemplate["feature"], chatData);
 
       // Play rolling sound
       AudioHelper.play({src: 'sounds/lock.wav', volume: 0.8, loop: false}, true);
