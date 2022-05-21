@@ -57,7 +57,7 @@ export class CmhvItem extends Item {
     };
 
     // WEAPON
-    if (this.data.data.isWeapon) {
+    if (item.data.isWeapon) {
       
       // Retrieve roll data.
       const rollData = this.getRollData();
@@ -87,7 +87,7 @@ export class CmhvItem extends Item {
       return ChatMessage.create(chatData);
     }
     // SPELL
-    if(this.data.type == "spell") {
+    if(item.type == "spell") {
       
       // Retrieve roll data.
       const rollData = this.getRollData();
@@ -114,7 +114,7 @@ export class CmhvItem extends Item {
 
       return ChatMessage.create(chatData);
     }
-    if(this.data.type === "knowledge") {
+    if(item.type === "knowledge") {
 
       chatData.level = item.data.knowledgeLevel;
 
@@ -125,7 +125,7 @@ export class CmhvItem extends Item {
 
       return ChatMessage.create(chatData);
     }
-    if(this.data.type === "feature") {
+    if(item.type === "feature") {
 
       chatData.content = await renderTemplate(this.chatTemplate["feature"], chatData);
 

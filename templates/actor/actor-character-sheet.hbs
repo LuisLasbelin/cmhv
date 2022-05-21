@@ -65,12 +65,26 @@
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
           <div class="builds flexcol">
+            <div class="items-header">
+              {{localize 'CMHV.Build'}}
+            </div>
             {{#each data.build as |build key|}}
             <div class="build flexrow flex-group-center">
               <label for="data.build.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@build.{{key}}.value" data-label="{{build.label}}">{{build.label}}</label>
               <input type="text" name="data.build.{{key}}.value" value="{{build.value}}" data-dtype="Number"/>
             </div>
             {{/each}}
+            <div class="items-header">
+              {{localize 'CMHV.Combat'}}
+            </div>
+            <div class="build flexrow flex-group-center">
+              <label for="data.defense" class="resource-label rollable flexlarge align-left" data-roll="@defense.value" data-label="{{localize 'CMHV.Defense'}}">{{localize 'CMHV.Defense'}}</label>
+              <input type="text" name="data.defense.value" value="{{data.defense.value}}" data-dtype="Number"/>
+            </div>
+            <div class="build flexrow flex-group-center">
+              <label for="data.dodge" class="resource-label rollable flexlarge align-left" data-roll="d20+@dodge.value" data-label="{{localize 'CMHV.Dodge'}}">{{localize 'CMHV.Dodge'}}</label>
+              <input type="text" name="data.dodge.value" value="{{data.dodge.value}}" data-dtype="Number"/>
+            </div>
           </div>
         </aside>
 

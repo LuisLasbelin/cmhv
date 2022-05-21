@@ -14,10 +14,24 @@
           "max": 10
         },
         "biography": ""
+      },
+      "combat": {
+        "attack": {
+          "value": 0
+        },
+        "defense": {
+          "value": 0
+        },
+        "dodge": {
+          "value": 0
+        },
+        "speed": {
+          "value": 0
+        }
       }
     },
     "character": {
-      "templates": ["base"],
+      "templates": ["base", "combat"],
       "attributes": {
         "level": {
           "value": 1

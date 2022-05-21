@@ -2,10 +2,16 @@
     "CMHV.Stamina": "Aguante",
     "CMHV.Health": "Vida",
 
+    "CMHV.Feature": "Aptitud",
+
+    "CMHV.Build": "Características",
     "CMHV.AttributeBody": "Cuerpo",
     "CMHV.AttributeMind": "Mente",
     "CMHV.AttributeSkill": "Habilidad",
     "CMHV.AttributeWill": "Voluntad",
+    "CMHV.Defense": "Defensa",
+    "CMHV.Dodge": "Esquiva",
+    "CMHV.Combat": "Combate",
 
     "CMHV.Attributes": "Atributos",
     "CMHV.Description": "Descripción",

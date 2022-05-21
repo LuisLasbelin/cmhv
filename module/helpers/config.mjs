@@ -11,6 +11,13 @@ CMHV.build = {
   "will": "CMHV.AttributeWill"
 };
 
+CMHV.itemType = {
+  "weapon": "CMHV.Weapon",
+  "item": "CMHV.Item",
+  "spell": "CMHV.Spell",
+  "knowledge": "CMHV.Knowledge"
+}
+
 CMHV.damageType = {
   "blunt": "CMHV.DamageBlunt",
   "pierce": "CMHV.DamagePierce",
