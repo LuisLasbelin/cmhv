@@ -23,3 +23,8 @@ CMHV.spellCircle = {
   'Destruction' : "CMHV.SpellCircleDestruction",
   'Invocation' : "CMHV.SpellCircleInvocation"
 }
+
+CMHV.rangeType = {
+  'melee' : "CMHV.Melee",
+  'ranged' : "CMHV.Ranged"
+}

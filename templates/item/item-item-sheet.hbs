@@ -41,16 +41,28 @@
     <div class="tab attributes" data-group="primary" data-tab="attributes">
       {{!-- As you add new fields, add them in here! --}}
       <div class="resource">
-        <label class="resource-label">{{ localize 'CMHV.isWeapon' }}</label>
+        <label class="resource-label">{{ localize 'CMHV.Weapon' }}?</label>
         <input type="checkbox" name="data.isWeapon" {{checked data.isWeapon}} data-dtype="Bool" />
       </div>
       <div class="resource">
         <label class="resource-label">{{ localize 'CMHV.Precission' }}</label>
-        <input type="text" name="data.precission.value" value="{{data.precission.value}}" data-dtype="Number" />
+        <input class="cmhv-input-text" type="text" name="data.precission.value" value="{{data.precission.value}}" data-dtype="Number" />
       </div>
       <div class="resource">
         <label class="resource-label">{{ localize 'CMHV.DamageRoll' }}</label>
-        <input type="text" name="data.damage.value" value="{{data.damage.value}}" data-dtype="String" />
+        <input class="cmhv-input-text" type="text" name="data.damage.value" value="{{data.damage.value}}" data-dtype="String" />
+      </div>
+      <div class="resource">
+        <label class="resource-label">{{ localize 'CMHV.Range' }}</label>
+        <select name="data.range.type">
+          {{#select data.range.type}}
+              <option value="melee">{{ localize 'CMHV.Melee' }}</option>
+              <option value="ranged">{{ localize 'CMHV.Ranged' }}</option>
+          {{/select}}
+        </select>
+
+        <label class="resource-label">{{ localize 'CMHV.Distance' }}</label>
+        <input class="cmhv-input-text" type="text" name="data.range.value" value="{{data.range.value}}" data-dtype="Number" />
       </div>
       <div class="resource">
         <label class="resource-label">{{ localize 'CMHV.DamageType' }}</label>

@@ -18,10 +18,14 @@
 
     "CMHV.DamageType": "Tipo de daño",
     "CMHV.DamageRoll": "Tirada de daño",
-    "CMHV.isWeapon": "Arma?",
+    "CMHV.Weapon": "Arma",
     "CMHV.DamageBlunt": "Contundente",
     "CMHV.DamagePierce": "Lacerante",
     "CMHV.DamageSlash": "Cortante",
+    "CMHV.Range": "Rango",
+    "CMHV.Distance": "Distancia",
+    "CMHV.Ranged": "A distancia",
+    "CMHV.Melee": "Cuerpo a cuerpo",
 
     "CMHV.Spell": "Conjuro",
     "CMHV.Spells": "Conjuros",

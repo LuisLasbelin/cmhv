@@ -7,7 +7,8 @@ import {CMHV} from "../helpers/config.mjs"
 export class CmhvItem extends Item {
   chatTemplate = {
     "weapon": "systems/cmhv/templates/chat/chat-weapon.hbs",
-    "spell": "systems/cmhv/templates/chat/chat-spell.hbs"
+    "spell": "systems/cmhv/templates/chat/chat-spell.hbs",
+    "item": "systems/cmhv/templates/chat/chat-item.hbs"
   };
 
   /**
@@ -42,19 +43,19 @@ export class CmhvItem extends Item {
     const item = this.data;
 
     // Initialize chat data.
-    const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get('core', 'rollMode');
-    const label = `[${item.type}] ${item.name}`;
+    
+    let chatData = {
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      rollMode: rollMode,
+      actor: this.actor,
+      item: this,
+      description: item.data.description ?? ''
+    };
 
     // WEAPON
     if (this.data.data.isWeapon) {
-      let chatData = {
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        rollMode: rollMode,
-        actor: this.actor,
-        item: this,
-        content: item.data.description ?? ''
-      };
+      
       // Retrieve roll data.
       const rollData = this.getRollData();
       console.log(item);
@@ -69,6 +70,12 @@ export class CmhvItem extends Item {
       chatData.rollPrecission = await rollPrecission.roll({ async: true });
       chatData.rollDamage = await rollDamage.roll({ async: true });
 
+      // Translated range
+      chatData.rangeType = CMHV.rangeType[item.data.range.type];
+      if(item.data.range.type === "ranged"){
+        chatData.rangeValue = item.data.range.value + "m";
+      }
+
       chatData.content = await renderTemplate(this.chatTemplate["weapon"], chatData);
 
       // Play rolling sound
@@ -78,13 +85,7 @@ export class CmhvItem extends Item {
     }
     // SPELL
     if(this.data.type == "spell") {
-      let chatData = {
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        rollMode: rollMode,
-        actor: this.actor,
-        item: item,
-        content: item.data.description ?? ''
-      };
+      
       // Retrieve roll data.
       const rollData = this.getRollData();
       // Invoke the roll and submit it to chat.
@@ -110,11 +111,17 @@ export class CmhvItem extends Item {
 
       return ChatMessage.create(chatData);
     }
-    ChatMessage.create({
-      speaker: speaker,
-      rollMode: rollMode,
-      flavor: label,
-      content: item.data.description ?? ''
-    });
+    // COMMON ITEM
+    chatData.value = item.data.value;
+    chatData.weight = item.data.weight;
+    chatData.quantity = item.data.quantity;
+
+    chatData.content = await renderTemplate(this.chatTemplate["item"], chatData);
+
+    console.log(item);
+    // Play rolling sound
+    AudioHelper.play({src: 'sounds/lock.wav', volume: 0.8, loop: false}, true);
+
+    return ChatMessage.create(chatData);
   }
 }

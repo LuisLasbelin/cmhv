@@ -22,6 +22,7 @@
   "CMHV.DamageBlunt": "Blunt",
   "CMHV.DamagePierce": "Piercing",
   "CMHV.DamageSlash": "Slashing",
+  "CMHV.Range": "Range",
 
   "CMHV.Spell": "Spell",
   "CMHV.Spells": "Spells",
