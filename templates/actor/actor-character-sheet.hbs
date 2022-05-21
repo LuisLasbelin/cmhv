@@ -49,6 +49,7 @@
     <a class="item" data-tab="description">{{localize 'CMHV.Description'}}</a>
     <a class="item" data-tab="items">{{localize "CMHV.Inventory"}}</a>
     <a class="item" data-tab="spells">{{localize 'CMHV.Spells'}}</a>
+    <a class="item" data-tab="knowledge">{{localize 'CMHV.Knowledge'}}</a>
     <a class="item" data-tab="effects">{{localize "CMHV.Effects"}}</a>
   </nav>
 
@@ -96,6 +97,11 @@
     {{!-- Owned Spells Tab --}}
     <div class="tab spells" data-group="primary" data-tab="spells">
       {{> "systems/cmhv/templates/actor/parts/actor-spells.hbs"}}
+    </div>
+
+    {{!-- Known Knowledge Tab --}}
+    <div class="tab knowledge" data-group="primary" data-tab="knowledge">
+      {{> "systems/cmhv/templates/actor/parts/actor-knowledge.hbs"}}
     </div>
 
     {{!-- Active Effects Tab --}}

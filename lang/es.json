@@ -9,9 +9,11 @@
 
     "CMHV.Attributes": "Atributos",
     "CMHV.Description": "Descripción",
+    "CMHV.Knowledge": "Conocimiento",
 
     "CMHV.Inventory": "Inventario",
     "CMHV.Effects": "Efectos",
+    "CMHV.Item": "Objeto",
     "CMHV.ItemQuantity": "Cantidad",
     "CMHV.ItemWeight": "Peso",
     "CMHV.ItemValue": "Valor",
@@ -58,5 +60,6 @@
     "CMHV.Precission": "Precisión",
     "CMHV.Damage": "Daños",
 
-    "CMHV.Add": "Añadir"
+    "CMHV.Add": "Añadir",
+    "CMHV.Name": "Nombre"
 }

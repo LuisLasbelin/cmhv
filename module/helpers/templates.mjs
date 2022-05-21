@@ -11,5 +11,6 @@
     "systems/cmhv/templates/actor/parts/actor-items.hbs",
     "systems/cmhv/templates/actor/parts/actor-spells.hbs",
     "systems/cmhv/templates/actor/parts/actor-effects.hbs",
+    "systems/cmhv/templates/actor/parts/actor-knowledge.hbs",
   ]);
 };

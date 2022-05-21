@@ -44,7 +44,7 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "feature", "spell", "knowledge"],
     "templates": {
       "base": {
         "description": ""
@@ -85,6 +85,10 @@
       "spellLevel": "1",
       "spellDamage": "1d4",
       "spellDomain": "Bless"
+    },
+    "knowledge": {
+      "templates": ["base"],
+      "knowledgeLevel": 1
     }
   }
 }

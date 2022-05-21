@@ -8,7 +8,8 @@ export class CmhvItem extends Item {
   chatTemplate = {
     "weapon": "systems/cmhv/templates/chat/chat-weapon.hbs",
     "spell": "systems/cmhv/templates/chat/chat-spell.hbs",
-    "item": "systems/cmhv/templates/chat/chat-item.hbs"
+    "item": "systems/cmhv/templates/chat/chat-item.hbs",
+    "knowledge": "systems/cmhv/templates/chat/chat-knowledge.hbs"
   };
 
   /**
@@ -111,6 +112,17 @@ export class CmhvItem extends Item {
 
       return ChatMessage.create(chatData);
     }
+    if(this.data.type === "knowledge") {
+
+      chatData.level = item.data.knowledgeLevel;
+
+      chatData.content = await renderTemplate(this.chatTemplate["knowledge"], chatData);
+
+      // Play rolling sound
+      AudioHelper.play({src: 'sounds/lock.wav', volume: 0.8, loop: false}, true);
+
+      return ChatMessage.create(chatData);
+    }
     // COMMON ITEM
     chatData.value = item.data.value;
     chatData.weight = item.data.weight;
@@ -118,7 +130,6 @@ export class CmhvItem extends Item {
 
     chatData.content = await renderTemplate(this.chatTemplate["item"], chatData);
 
-    console.log(item);
     // Play rolling sound
     AudioHelper.play({src: 'sounds/lock.wav', volume: 0.8, loop: false}, true);
 

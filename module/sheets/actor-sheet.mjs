@@ -121,6 +121,7 @@ export class CmhvActorSheet extends ActorSheet {
         }
       }
     };
+    const knowledge = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -140,16 +141,16 @@ export class CmhvActorSheet extends ActorSheet {
           circle.levels[i.data.spellLevel].push(i);
         }
       }
+      else if (i.type === 'knowledge') {
+        knowledge.push(i);
+      }
     }
-
-    // Health calculation and stamina
-    context.data.health.max = 5 + context.data.build.body.value;
-    context.data.stamina.max = 5 + context.data.build.body.value * context.data.attributes.level.value;
 
     // Assign and return
     context.gear = gear;
     context.features = features;
     context.spells = spells;
+    context.knowledge = knowledge;
     context.CMHV = CMHV;
   }
 
