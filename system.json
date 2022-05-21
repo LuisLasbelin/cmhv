@@ -27,7 +27,7 @@
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "stamina",
   "url": "",
-  "manifest": "system.json",
+  "manifest": "https://gitlab.com/api/v4/projects/foundrynet%2Fdnd5e/packages/generic/dnd5e/latest/system.json",
   "download": "",
   "license": "LICENSE.txt"
 }
