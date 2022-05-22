@@ -70,7 +70,7 @@
             </div>
             {{#each data.build as |build key|}}
             <div class="build flexrow flex-group-center">
-              <label for="data.build.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@build.{{key}}.value" data-label="{{build.label}}">{{build.label}}</label>
+              <label for="data.build.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@build.{{key}}.value" data-label="{{build.label}}"><abbr title="@build.{{key}}.value: {{build.value}}">{{build.label}}</abbr></label>
               <input type="text" name="data.build.{{key}}.value" value="{{build.value}}" data-dtype="Number"/>
             </div>
             {{/each}}

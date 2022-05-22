@@ -52,7 +52,7 @@ export class CmhvItem extends Item {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       rollMode: rollMode,
       actor: this.actor,
-      item: this,
+      item: item,
       description: item.data.description ?? ''
     };
 
@@ -111,7 +111,7 @@ export class CmhvItem extends Item {
       const rollData = this.getRollData();
       // Invoke the roll and submit it to chat.
       const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.will.value, rollData);
-      const rollDamage = new Roll(item.data.spellDamage + "+" + this.actor.getRollData().build.will.value, rollData);
+      const rollDamage = new Roll(item.data.spellDamage, rollData);
 
       chatData.rollDamageJson = rollDamage.toJSON();
 
