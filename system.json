@@ -26,8 +26,8 @@
   "gridUnits": "m",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "stamina",
-  "url": "",
-  "manifest": "system.json",
+  "url": "https://github.com/Luistorch/cmhv",
+  "manifest": "https://github.com/Luistorch/cmhv/blob/master/system.json",
   "download": "",
-  "license": "LICENSE.txt"
+  "license": "https://github.com/Luistorch/cmhv/blob/master/LICENSE.txt"
 }

@@ -135,9 +135,7 @@ export class CmhvItem extends Item {
 
       // Translated spell circle
       chatData.spellCircle = CMHV.spellCircle[item.data.spellCircle];
-
-      // Translated damage type
-      chatData.damageType = CMHV.damageType[item.data.damageType];
+      chatData.spellDomain = CMHV.spellDomain[item.data.spellDomain];
 
       // If you need to store the value first, uncomment the next line.
       // let result = await roll.roll({async: true});

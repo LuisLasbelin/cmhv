@@ -13,6 +13,11 @@
           "min": 0,
           "max": 10
         },
+        "kimiya": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        },
         "biography": ""
       },
       "combat": {
@@ -104,7 +109,7 @@
       "spellLevel": "1",
       "spellDamage": "1d4",
       "spellDomain": "Bless",
-      "damageType": "holy"
+      "cost": 0
     },
     "knowledge": {
       "templates": ["base"],

@@ -67,6 +67,8 @@
     "CMHV.SpellDomainLife": "Vida",
     "CMHV.SpellDomainEarth": "Tierra",
     "CMHV.SpellDomainElemental": "Elemental",
+    "CMHV.Cost": "Coste",
+    "CMHV.Kimiya": "Kimiya",
 
     "CMHV.Armor": "Armadura",
     "CMHV.ArmorLight": "Ligera",
