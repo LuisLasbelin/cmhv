@@ -80,11 +80,7 @@
           "value": 0,
           "type": "melee"
         },
-        "damageTypes": {
-          "slash": false,
-          "pierce": false,
-          "blunt": false
-        }
+        "damageType": "slash"
       }
     },
     "item": {
@@ -98,7 +94,8 @@
       "spellCircle": "Light",
       "spellLevel": "1",
       "spellDamage": "1d4",
-      "spellDomain": "Bless"
+      "spellDomain": "Bless",
+      "damageType": "holy"
     },
     "knowledge": {
       "templates": ["base"],

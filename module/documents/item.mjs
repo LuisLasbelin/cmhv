@@ -61,7 +61,6 @@ export class CmhvItem extends Item {
       
       // Retrieve roll data.
       const rollData = this.getRollData();
-      console.log(item);
       // Invoke the roll and submit it to chat.
       const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.body.value+ "+" + item.data.precission.value, rollData);
       const rollDamage = new Roll(item.data.damage.value + "+" + this.actor.getRollData().build.body.value, rollData);
@@ -78,6 +77,9 @@ export class CmhvItem extends Item {
       if(item.data.range.type === "ranged"){
         chatData.rangeValue = item.data.range.value + "m";
       }
+
+      // Translated damage type
+      chatData.damageType = CMHV.damageType[item.data.damageType];
 
       chatData.content = await renderTemplate(this.chatTemplate["weapon"], chatData);
 
@@ -102,10 +104,15 @@ export class CmhvItem extends Item {
       // Translated spell circle
       chatData.spellCircle = CMHV.spellCircle[item.data.spellCircle];
 
+      // Translated damage type
+      chatData.damageType = CMHV.damageType[item.data.damageType];
+
       // If you need to store the value first, uncomment the next line.
       // let result = await roll.roll({async: true});
       chatData.rollPrecission = await rollPrecission.roll({ async: true });
       chatData.rollDamage = await rollDamage.roll({ async: true });
+
+      chatData.level = item.data.spellLevel;
 
       chatData.content = await renderTemplate(this.chatTemplate["spell"], chatData);
 

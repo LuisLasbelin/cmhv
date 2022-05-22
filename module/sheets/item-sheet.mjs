@@ -108,11 +108,28 @@ export class CmhvItemSheet extends ItemSheet {
 
       context.spellDomains = spellCircles[context.item.data.data.spellCircle].domains;
 
-      console.log(context.spellDomains);
-
       // Adds data to the .hbs to use
       context.spellCircles = spellCircles;      
+    } // spell end
+
+    const damageTypes = {
+      "blunt": context.config.damageType["blunt"],
+      "pierce": context.config.damageType["pierce"],
+      "slash": context.config.damageType["slash"],
+      "fire": context.config.damageType["fire"],
+      "cold": context.config.damageType["cold"],
+      "electricity": context.config.damageType["electricity"],
+      "acid": context.config.damageType["acid"],
+      "poison": context.config.damageType["poison"],
+      "sonic": context.config.damageType["sonic"],
+      "psychic": context.config.damageType["psychic"],
+      "holy": context.config.damageType["holy"],
+      "dark": context.config.damageType["dark"],
+      "necrotic": context.config.damageType["necrotic"],
     }
+
+    context.damageTypes = damageTypes;
+    console.log(context.item.data.data);
 
   }
 

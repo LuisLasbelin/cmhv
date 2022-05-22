@@ -21,7 +21,17 @@ CMHV.itemType = {
 CMHV.damageType = {
   "blunt": "CMHV.DamageBlunt",
   "pierce": "CMHV.DamagePierce",
-  "slash": "CMHV.DamageSlash"
+  "slash": "CMHV.DamageSlash",
+  "fire": "CMHV.DamageFire",
+  "cold": "CMHV.DamageCold",
+  "electricity": "CMHV.DamageElectricity",
+  "acid": "CMHV.DamageAcid",
+  "poison": "CMHV.DamagePoison",
+  "sonic": "CMHV.DamageSonic",
+  "psychic": "CMHV.DamagePsychic",
+  "holy": "CMHV.DamageHoly",
+  "dark": "CMHV.DamageDark",
+  "necrotic": "CMHV.DamageNecrotic",
 }
 
 CMHV.spellCircle = {
