@@ -11,10 +11,34 @@ CMHV.build = {
   "will": "CMHV.AttributeWill"
 };
 
+CMHV.itemType = {
+  "weapon": "CMHV.Weapon",
+  "item": "CMHV.Item",
+  "spell": "CMHV.Spell",
+  "knowledge": "CMHV.Knowledge"
+}
+
 CMHV.damageType = {
   "blunt": "CMHV.DamageBlunt",
   "pierce": "CMHV.DamagePierce",
-  "slash": "CMHV.DamageSlash"
+  "slash": "CMHV.DamageSlash",
+  "fire": "CMHV.DamageFire",
+  "cold": "CMHV.DamageCold",
+  "electricity": "CMHV.DamageElectricity",
+  "acid": "CMHV.DamageAcid",
+  "poison": "CMHV.DamagePoison",
+  "sonic": "CMHV.DamageSonic",
+  "psychic": "CMHV.DamagePsychic",
+  "holy": "CMHV.DamageHoly",
+  "dark": "CMHV.DamageDark",
+  "necrotic": "CMHV.DamageNecrotic",
+}
+
+CMHV.armorType = {
+  "light": "CMHV.ArmorLight",
+  "medium": "CMHV.ArmorMedium",
+  "heavy": "CMHV.ArmorHeavy",
+  "shield": "CMHV.ArmorShield"
 }
 
 CMHV.spellCircle = {

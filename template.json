@@ -14,10 +14,24 @@
           "max": 10
         },
         "biography": ""
+      },
+      "combat": {
+        "attack": {
+          "value": 0
+        },
+        "defense": {
+          "value": "0"
+        },
+        "dodge": {
+          "value": 0
+        },
+        "speed": {
+          "value": 0
+        }
       }
     },
     "character": {
-      "templates": ["base"],
+      "templates": ["base", "combat"],
       "attributes": {
         "level": {
           "value": 1
@@ -44,7 +58,7 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell", "knowledge"],
+    "types": ["item", "weapon", "armor", "feature", "spell", "knowledge"],
     "templates": {
       "base": {
         "description": ""
@@ -55,7 +69,6 @@
         "value": 0
       },
       "weapon": {
-        "isWeapon": false,
         "precission": {
           "value": 0
         },
@@ -66,15 +79,21 @@
           "value": 0,
           "type": "melee"
         },
-        "damageTypes": {
-          "slash": false,
-          "pierce": false,
-          "blunt": false
-        }
+        "damageType": "slash"
       }
     },
     "item": {
+      "templates": ["base", "market"]
+    },
+    "weapon": {
       "templates": ["base", "market", "weapon"]
+    },
+    "armor": {
+      "templates": ["base", "market"],
+      "defense": {
+        "value": ""
+      },
+      "armorType": "light"
     },
     "feature": {
       "templates": ["base"]
@@ -84,7 +103,8 @@
       "spellCircle": "Light",
       "spellLevel": "1",
       "spellDamage": "1d4",
-      "spellDomain": "Bless"
+      "spellDomain": "Bless",
+      "damageType": "holy"
     },
     "knowledge": {
       "templates": ["base"],

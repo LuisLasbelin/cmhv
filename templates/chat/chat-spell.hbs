@@ -1,5 +1,6 @@
 <div class="cmhv chat-card item-card" data-actor-id="{{actor._id}}" data-item-id="{{item._id}}">
     <div class="align-left">
+        <div class="cmhv-item-label">{{localize 'CMHV.Spell'}}</div>
         <img class="cmhv-chat-image" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
         <div class="cmhv-chat-title">{{item.name}}</div>
     </div>
@@ -12,7 +13,8 @@
     <div class="cmhv-inline-result-red">
         <div class="cmhv-section-title-red">{{ localize "CMHV.Spell"}}</div>
         <p class="item-formula">{{localize 'CMHV.SpellCircle'}}: {{localize spellCircle}}</p>
-        <p class="item-formula">{{localize 'CMHV.Level'}}: {{item.data.spellLevel}}</p>
+        <p class="item-formula">{{localize 'CMHV.Level'}}: {{level}}</p>
+        <p class="item-formula">{{localize 'CMHV.DamageType'}}: {{localize damageType}}</p>
     </div>
     <div class="cmhv-inline-result-red">
         <div class="cmhv-section-title-red">{{ localize "CMHV.Precission"}}</div>
@@ -23,7 +25,7 @@
     <div class="cmhv-inline-result-red">
         <div class="cmhv-section-title-red">{{ localize "CMHV.SpellDamage"}}</div>
         <p class="item-formula">Total: <b>{{rollDamage.total}}</b></p>
-        <p class="item-formula">Formula: {{rollDamageJson.terms.[0].number}}d{{rollDamageJson.terms.[0].faces}} + {{ localize 'CMHV.AttributeWill'}}</p>
+        <p class="item-formula">Formula: {{item.data.spellDamage}}</p>
         <p class="item-formula">Result: {{rollDamage.result}}</p>
     </div>
 </div>

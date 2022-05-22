@@ -491,6 +491,13 @@
   border: none;
 }
 
+.cmhv .cmhv-item-label {
+  display: block;
+  font-size: 12px;
+  color: grey;
+  margin-bottom: 5px;
+}
+
 .cmhv .cmhv-inline-result {
   border: 1px solid grey;
 }

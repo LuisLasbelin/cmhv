@@ -10,7 +10,8 @@ export class CmhvItem extends Item {
     "spell": "systems/cmhv/templates/chat/chat-spell.hbs",
     "item": "systems/cmhv/templates/chat/chat-item.hbs",
     "knowledge": "systems/cmhv/templates/chat/chat-knowledge.hbs",
-    "feature": "systems/cmhv/templates/chat/chat-feature.hbs"
+    "feature": "systems/cmhv/templates/chat/chat-feature.hbs",
+    "armor": "systems/cmhv/templates/chat/chat-armor.hbs",
 
   };
 
@@ -52,21 +53,37 @@ export class CmhvItem extends Item {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       rollMode: rollMode,
       actor: this.actor,
-      item: this,
+      item: item,
       description: item.data.description ?? ''
     };
 
     // WEAPON
-    if (this.data.data.isWeapon) {
+    if (item.type === "weapon") {
       
+      // necessary translations
+      let skill = game.i18n.localize("CMHV.AttributeSkill");
+      let body = game.i18n.localize("CMHV.AttributeBody"); 
+      let precission = game.i18n.localize("CMHV.Precission"); 
+
       // Retrieve roll data.
       const rollData = this.getRollData();
-      console.log(item);
       // Invoke the roll and submit it to chat.
-      const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.body.value+ "+" + item.data.precission.value, rollData);
-      const rollDamage = new Roll(item.data.damage.value + "+" + this.actor.getRollData().build.body.value, rollData);
-
-      chatData.rollDamageJson = rollDamage.toJSON();
+      const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.skill.value+ "+" + item.data.precission.value, rollData);
+      chatData.rollPrecissionFormula = `d20 + ${skill} + ${precission}`;
+      // Damage rolls
+      let rollDamage = {};
+      // Ranged damage
+      if(item.data.range.type === "ranged") {
+        rollDamage = new Roll(item.data.damage.value + "+" + this.actor.getRollData().build.body.value + "/2", rollData);
+        chatData.rollDamageJson = rollDamage.toJSON();
+        chatData.rollDamageFormula = `${chatData.rollDamageJson.terms[0].number}d${chatData.rollDamageJson.terms[0].faces} + ${body}/2`;
+      }
+      // Melee damage
+      else {
+        rollDamage = new Roll(item.data.damage.value + "+" + this.actor.getRollData().build.body.value, rollData);
+        chatData.rollDamageJson = rollDamage.toJSON();
+        chatData.rollDamageFormula = `${chatData.rollDamageJson.terms[0].number}d${chatData.rollDamageJson.terms[0].faces} + ${body}`;
+      }
 
       // If you need to store the value first, uncomment the next line.
       // let result = await roll.roll({async: true});
@@ -79,6 +96,9 @@ export class CmhvItem extends Item {
         chatData.rangeValue = item.data.range.value + "m";
       }
 
+      // Translated damage type
+      chatData.damageType = CMHV.damageType[item.data.damageType];
+
       chatData.content = await renderTemplate(this.chatTemplate["weapon"], chatData);
 
       // Play rolling sound
@@ -86,14 +106,28 @@ export class CmhvItem extends Item {
 
       return ChatMessage.create(chatData);
     }
+    // ARMOR
+    if(item.type === "armor") {
+      // Translations
+      const armorType = game.i18n.localize(CMHV.armorType[item.data.armorType]);
+
+      chatData.armorType = armorType;
+
+      chatData.content = await renderTemplate(this.chatTemplate["armor"], chatData);
+
+      // Play rolling sound
+      AudioHelper.play({src: 'sounds/dice.wav', volume: 0.8, loop: false}, true);
+
+      return ChatMessage.create(chatData);
+    }
     // SPELL
-    if(this.data.type == "spell") {
+    if(item.type == "spell") {
       
       // Retrieve roll data.
       const rollData = this.getRollData();
       // Invoke the roll and submit it to chat.
       const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.will.value, rollData);
-      const rollDamage = new Roll(item.data.spellDamage + "+" + this.actor.getRollData().build.will.value, rollData);
+      const rollDamage = new Roll(item.data.spellDamage, rollData);
 
       chatData.rollDamageJson = rollDamage.toJSON();
 
@@ -102,10 +136,15 @@ export class CmhvItem extends Item {
       // Translated spell circle
       chatData.spellCircle = CMHV.spellCircle[item.data.spellCircle];
 
+      // Translated damage type
+      chatData.damageType = CMHV.damageType[item.data.damageType];
+
       // If you need to store the value first, uncomment the next line.
       // let result = await roll.roll({async: true});
       chatData.rollPrecission = await rollPrecission.roll({ async: true });
       chatData.rollDamage = await rollDamage.roll({ async: true });
+
+      chatData.level = item.data.spellLevel;
 
       chatData.content = await renderTemplate(this.chatTemplate["spell"], chatData);
 
@@ -114,7 +153,7 @@ export class CmhvItem extends Item {
 
       return ChatMessage.create(chatData);
     }
-    if(this.data.type === "knowledge") {
+    if(item.type === "knowledge") {
 
       chatData.level = item.data.knowledgeLevel;
 
@@ -125,7 +164,7 @@ export class CmhvItem extends Item {
 
       return ChatMessage.create(chatData);
     }
-    if(this.data.type === "feature") {
+    if(item.type === "feature") {
 
       chatData.content = await renderTemplate(this.chatTemplate["feature"], chatData);
 

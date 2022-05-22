@@ -2,7 +2,7 @@
   "name": "cmhv",
   "title": "CMHV",
   "description": "The cmhv system for FoundryVTT!",
-  "version": "0.1.0",
+  "version": "0.2.22052022",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
   "author": "Luis Lasbelin",
@@ -22,8 +22,8 @@
       "path": "lang/es.json"
     }
   ],
-  "gridDistance": 5,
-  "gridUnits": "ft",
+  "gridDistance": 1.5,
+  "gridUnits": "m",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "stamina",
   "url": "",

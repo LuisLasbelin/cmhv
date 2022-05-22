@@ -85,7 +85,24 @@ export class CmhvActorSheet extends ActorSheet {
    */
   _prepareItems(context) {
     // Initialize containers.
-    const gear = [];
+    const gear = {
+      'weapon': {
+        'showDamage': true,
+        'name': game.i18n.localize('CMHV.Weapon'),
+        'items': []
+      },
+      'armor': {
+        'showArmor': true,
+        'name': game.i18n.localize('CMHV.Armor'),
+        'items': []
+      },
+      'item': {
+        'showQuantity': true,
+        'name': game.i18n.localize('CMHV.Item'),
+        'items': []
+      }
+    };
+
     const features = [];
     const spells = {
       'Light': {
@@ -128,7 +145,13 @@ export class CmhvActorSheet extends ActorSheet {
       i.img = i.img || DEFAULT_TOKEN;
       // Append to gear.
       if (i.type === 'item') {
-        gear.push(i);
+        gear.item.items.push(i);
+      }
+      else if (i.type === 'weapon') {
+        gear.weapon.items.push(i);
+      }
+      else if (i.type === 'armor') {
+        gear.armor.items.push(i);
       }
       // Append to features.
       else if (i.type === 'feature') {
