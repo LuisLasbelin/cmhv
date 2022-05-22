@@ -59,13 +59,29 @@ export class CmhvItem extends Item {
     // WEAPON
     if (item.data.isWeapon) {
       
+      // necessary translations
+      let skill = game.i18n.localize("CMHV.AttributeSkill");
+      let body = game.i18n.localize("CMHV.AttributeBody"); 
+
       // Retrieve roll data.
       const rollData = this.getRollData();
       // Invoke the roll and submit it to chat.
-      const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.body.value+ "+" + item.data.precission.value, rollData);
-      const rollDamage = new Roll(item.data.damage.value + "+" + this.actor.getRollData().build.body.value, rollData);
-
-      chatData.rollDamageJson = rollDamage.toJSON();
+      const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.skill.value+ "+" + item.data.precission.value, rollData);
+      chatData.rollPrecissionFormula = `d20 + ${skill} + Precission`;
+      // Damage rolls
+      let rollDamage = {};
+      // Ranged damage
+      if(item.data.range.type === "ranged") {
+        rollDamage = new Roll(item.data.damage.value + "+" + this.actor.getRollData().build.body.value + "/2", rollData);
+        chatData.rollDamageJson = rollDamage.toJSON();
+        chatData.rollDamageFormula = `${chatData.rollDamageJson.terms[0].number}d${chatData.rollDamageJson.terms[0].faces} + ${body}/2`;
+      }
+      // Melee damage
+      else {
+        rollDamage = new Roll(item.data.damage.value + "+" + this.actor.getRollData().build.body.value, rollData);
+        chatData.rollDamageJson = rollDamage.toJSON();
+        chatData.rollDamageFormula = `${chatData.rollDamageJson.terms[0].number}d${chatData.rollDamageJson.terms[0].faces} + ${body}`;
+      }
 
       // If you need to store the value first, uncomment the next line.
       // let result = await roll.roll({async: true});
