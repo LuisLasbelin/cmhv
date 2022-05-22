@@ -68,6 +68,12 @@
     "CMHV.SpellDomainEarth": "Tierra",
     "CMHV.SpellDomainElemental": "Elemental",
 
+    "CMHV.Armor": "Armadura",
+    "CMHV.ArmorLight": "Ligera",
+    "CMHV.ArmorMedium": "Media",
+    "CMHV.ArmorHeavy": "Pesada",
+    "CMHV.ArmorShield": "Escudo",
+
     "CMHV.EffectCreate": "Crear Efecto",
     "CMHV.EffectToggle": "Alternar Efecto",
     "CMHV.EffectEdit": "Editar Efecto",

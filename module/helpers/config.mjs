@@ -34,6 +34,13 @@ CMHV.damageType = {
   "necrotic": "CMHV.DamageNecrotic",
 }
 
+CMHV.armorType = {
+  "light": "CMHV.ArmorLight",
+  "medium": "CMHV.ArmorMedium",
+  "heavy": "CMHV.ArmorHeavy",
+  "shield": "CMHV.ArmorShield"
+}
+
 CMHV.spellCircle = {
   'Light' : "CMHV.SpellCircleLight",
   'Darkness' : "CMHV.SpellCircleDarkness",

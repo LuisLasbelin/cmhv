@@ -10,7 +10,8 @@ export class CmhvItem extends Item {
     "spell": "systems/cmhv/templates/chat/chat-spell.hbs",
     "item": "systems/cmhv/templates/chat/chat-item.hbs",
     "knowledge": "systems/cmhv/templates/chat/chat-knowledge.hbs",
-    "feature": "systems/cmhv/templates/chat/chat-feature.hbs"
+    "feature": "systems/cmhv/templates/chat/chat-feature.hbs",
+    "armor": "systems/cmhv/templates/chat/chat-armor.hbs",
 
   };
 
@@ -57,17 +58,18 @@ export class CmhvItem extends Item {
     };
 
     // WEAPON
-    if (item.data.isWeapon) {
+    if (item.type === "weapon") {
       
       // necessary translations
       let skill = game.i18n.localize("CMHV.AttributeSkill");
       let body = game.i18n.localize("CMHV.AttributeBody"); 
+      let precission = game.i18n.localize("CMHV.Precission"); 
 
       // Retrieve roll data.
       const rollData = this.getRollData();
       // Invoke the roll and submit it to chat.
       const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.skill.value+ "+" + item.data.precission.value, rollData);
-      chatData.rollPrecissionFormula = `d20 + ${skill} + Precission`;
+      chatData.rollPrecissionFormula = `d20 + ${skill} + ${precission}`;
       // Damage rolls
       let rollDamage = {};
       // Ranged damage
@@ -98,6 +100,20 @@ export class CmhvItem extends Item {
       chatData.damageType = CMHV.damageType[item.data.damageType];
 
       chatData.content = await renderTemplate(this.chatTemplate["weapon"], chatData);
+
+      // Play rolling sound
+      AudioHelper.play({src: 'sounds/dice.wav', volume: 0.8, loop: false}, true);
+
+      return ChatMessage.create(chatData);
+    }
+    // ARMOR
+    if(item.type === "armor") {
+      // Translations
+      const armorType = game.i18n.localize(CMHV.armorType[item.data.armorType]);
+
+      chatData.armorType = armorType;
+
+      chatData.content = await renderTemplate(this.chatTemplate["armor"], chatData);
 
       // Play rolling sound
       AudioHelper.play({src: 'sounds/dice.wav', volume: 0.8, loop: false}, true);
