@@ -19,7 +19,7 @@ Hooks.once('init', async function() {
   game.cmhv = {
     CmhvActor,
     CmhvItem,
-    rollItemMacro
+    rollItemMacro 
   };
 
   // Add custom constants for configuration.
@@ -125,3 +125,5 @@ function rollItemMacro(itemName) {
   // Trigger the item roll
   return item.roll();
 }
+
+Hooks.on("renderChatLog", (_, html) => CmhvItem.chatListeners(html));

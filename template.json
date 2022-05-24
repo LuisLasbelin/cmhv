@@ -18,7 +18,21 @@
           "min": 0,
           "max": 10
         },
-        "biography": ""
+        "biography": "",
+        "build": {
+          "body": {
+            "value": 0
+          },
+          "mind": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "will": {
+            "value": 0
+          }
+        }
       },
       "combat": {
         "attack": {
@@ -41,24 +55,10 @@
         "level": {
           "value": 1
         }
-      },
-      "build": {
-        "body": {
-          "value": 0
-        },
-        "mind": {
-          "value": 0
-        },
-        "skill": {
-          "value": 0
-        },
-        "will": {
-          "value": 0
-        }
       }
     },
     "npc": {
-      "templates": ["base"],
+      "templates": ["base", "combat"],
       "cr": 0
     }
   },

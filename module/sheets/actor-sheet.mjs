@@ -40,8 +40,6 @@ export class CmhvActorSheet extends ActorSheet {
     context.data = actorData.data;
     context.flags = actorData.flags;
 
-    console.log(context);
-
     // Prepare character data and items.
     if (actorData.type == 'character') {
       this._prepareItems(context);
@@ -50,6 +48,7 @@ export class CmhvActorSheet extends ActorSheet {
 
     // Prepare NPC data and items.
     if (actorData.type == 'npc') {
+      this._prepareCharacterData(context);
       this._prepareItems(context);
     }
 

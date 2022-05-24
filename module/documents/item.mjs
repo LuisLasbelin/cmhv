@@ -144,6 +144,11 @@ export class CmhvItem extends Item {
 
       chatData.level = item.data.spellLevel;
 
+      // TODO
+      // Get the actor kimiya value
+      // var kimiya = game.actors.get(chatData.speaker.actor).data.data.kimiya;
+      //game.cmhv.ManageResource.manageResource(kimiya, -1);
+
       chatData.content = await renderTemplate(this.chatTemplate["spell"], chatData);
 
       // Play rolling sound
@@ -182,5 +187,48 @@ export class CmhvItem extends Item {
     AudioHelper.play({src: 'sounds/lock.wav', volume: 0.8, loop: false}, true);
 
     return ChatMessage.create(chatData);
+  } // Roll  
+  
+  /* -------------------------------------------- */
+
+  static chatListeners(html) {
+    html.on("click", ".card-buttons button, .inline-action", this._onChatCardButton.bind(this));
   }
-}
+
+  // Funciona bien, sorprendente
+  static async _onChatCardButton(event) {
+    event.preventDefault();
+    
+    // Extract card data
+    const button = event.currentTarget;
+    button.disabled = true;
+    const card = button.closest(".chat-card");
+    const messageId = card.closest(".message").dataset.messageId;
+    const message = game.messages.get(messageId);
+
+    // Get the Actor from a synthetic Token
+    const actor = await this._getChatCardActor(card);
+
+  }
+
+  /**
+   * Get the Actor which is the author of a chat card
+   *
+   * @param {HTMLElement} card    The chat card being used
+   * @returns {Actor|null}         The Actor Document or null
+   * @private
+   */
+    static async _getChatCardActor(card) {
+      // Case 1 - a synthetic actor from a Token
+      const tokenUuid = card.dataset.tokenId;
+      if (tokenUuid) {
+        return (await fromUuid(tokenUuid))?.actor;
+      }
+  
+      // Case 2 - use Actor ID directory
+      const actorId = card.dataset.actorId;
+      return game.actors.get(actorId) || null;
+    }
+
+  /* -------------------------------------------- */
+} // Class

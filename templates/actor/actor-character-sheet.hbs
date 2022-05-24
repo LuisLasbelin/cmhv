@@ -92,7 +92,11 @@
             </div>
             <div class="build flexrow flex-group-center">
               <label for="data.dodge" class="resource-label rollable flexlarge align-left" data-roll="d20+@dodge.value" data-label="{{localize 'CMHV.Dodge'}}">{{localize 'CMHV.Dodge'}}</label>
-              <input type="text" name="data.dodge.value" value="{{data.dodge.value}}" data-dtype="Number"/>
+              <input type="text" name="data.dodge.value" value="{{data.dodge.value}}" data-dtype="String"/>
+            </div>
+            <div class="build flexrow flex-group-center">
+              <label for="data.speed" class="resource-label flexlarge align-left" data-label="{{localize 'CMHV.Speed'}}">{{localize 'CMHV.Speed'}} (m)</label>
+              <input type="text" name="data.speed.value" value="{{data.speed.value}}" data-dtype="Number"/>
             </div>
           </div>
         </aside>
