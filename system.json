@@ -2,7 +2,7 @@
   "name": "cmhv",
   "title": "CMHV",
   "description": "The cmhv system for FoundryVTT!",
-  "version": "0.2.22052022",
+  "version": "0.3.12062022",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
   "author": "Luis Lasbelin",
@@ -22,12 +22,12 @@
       "path": "lang/es.json"
     }
   ],
-  "gridDistance": 1.5,
+  "gridDistance": 1,
   "gridUnits": "m",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "stamina",
-  "url": "",
-  "manifest": "https://gitlab.com/api/v4/projects/foundrynet%2Fdnd5e/packages/generic/dnd5e/latest/system.json",
+  "url": "https://github.com/Luistorch/cmhv",
+  "manifest": "https://github.com/Luistorch/cmhv/blob/master/system.json",
   "download": "",
-  "license": "LICENSE.txt"
+  "license": "https://github.com/Luistorch/cmhv/blob/master/LICENSE.txt"
 }

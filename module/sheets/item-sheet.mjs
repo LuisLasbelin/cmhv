@@ -129,6 +129,13 @@ export class CmhvItemSheet extends ItemSheet {
         "necrotic": context.config.damageType["necrotic"],
       }
 
+      const weaponSizes = {
+        "light": context.config.weaponSize["light"],
+        "medium": context.config.weaponSize["medium"],
+        "heavy": context.config.weaponSize["heavy"]
+      }
+
+      context.weaponSizes = weaponSizes;
       context.damageTypes = damageTypes;
     }
 

@@ -53,14 +53,14 @@
         <label class="resource-label">{{localize 'CMHV.SpellDamage'}}</label>
         <input class="cmhv-input-text" type="text" name="data.spellDamage" value="{{data.spellDamage}}" data-dtype="String"/>
       </div>
-      <label class="resource-label">{{localize 'CMHV.DamageType'}}</label>
-        <select name="data.damageType">
-          {{#select data.damageType}}
-            {{#each damageTypes as |name damageType|}}
-              <option value="{{ damageType }}">{{ localize name }}</option>
-            {{/each}}
-          {{/select}}
-        </select>
+      <div class="resource">
+        <label class="resource-label">{{localize 'CMHV.Cost'}}</label>
+        <input class="cmhv-input-text" type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number"/>
+      </div>
+      <div class="resource">
+        <label class="resource-label">{{localize 'CMHV.Range'}}</label>
+        <input class="cmhv-input-text" type="text" name="data.spellRange" value="{{data.spellRange}}" data-dtype="Number"/>
+      </div>
     </div>
   </section>
 </form>

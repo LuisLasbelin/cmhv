@@ -68,8 +68,8 @@ export class CmhvItem extends Item {
       // Retrieve roll data.
       const rollData = this.getRollData();
       // Invoke the roll and submit it to chat.
-      const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.skill.value+ "+" + item.data.precission.value, rollData);
-      chatData.rollPrecissionFormula = `d20 + ${skill} + ${precission}`;
+      const rollPrecission = new Roll("d10+" + this.actor.getRollData().build.skill.value+ "+" + item.data.precission.value, rollData);
+      chatData.rollPrecissionFormula = `d10 + ${skill} + ${precission}`;
       // Damage rolls
       let rollDamage = {};
       // Ranged damage
@@ -126,7 +126,7 @@ export class CmhvItem extends Item {
       // Retrieve roll data.
       const rollData = this.getRollData();
       // Invoke the roll and submit it to chat.
-      const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.will.value, rollData);
+      const rollPrecission = new Roll("d10+" + this.actor.getRollData().build.will.value, rollData);
       const rollDamage = new Roll(item.data.spellDamage, rollData);
 
       chatData.rollDamageJson = rollDamage.toJSON();
@@ -135,9 +135,7 @@ export class CmhvItem extends Item {
 
       // Translated spell circle
       chatData.spellCircle = CMHV.spellCircle[item.data.spellCircle];
-
-      // Translated damage type
-      chatData.damageType = CMHV.damageType[item.data.damageType];
+      chatData.spellDomain = CMHV.spellDomain[item.data.spellDomain];
 
       // If you need to store the value first, uncomment the next line.
       // let result = await roll.roll({async: true});
@@ -145,6 +143,13 @@ export class CmhvItem extends Item {
       chatData.rollDamage = await rollDamage.roll({ async: true });
 
       chatData.level = item.data.spellLevel;
+
+      console.log(item.data);
+
+      // TODO
+      // Get the actor kimiya value
+      // var kimiya = game.actors.get(chatData.speaker.actor).data.data.kimiya;
+      //game.cmhv.ManageResource.manageResource(kimiya, -1);
 
       chatData.content = await renderTemplate(this.chatTemplate["spell"], chatData);
 
@@ -184,5 +189,48 @@ export class CmhvItem extends Item {
     AudioHelper.play({src: 'sounds/lock.wav', volume: 0.8, loop: false}, true);
 
     return ChatMessage.create(chatData);
+  } // Roll  
+  
+  /* -------------------------------------------- */
+
+  static chatListeners(html) {
+    html.on("click", ".card-buttons button, .inline-action", this._onChatCardButton.bind(this));
   }
-}
+
+  // Funciona bien, sorprendente
+  static async _onChatCardButton(event) {
+    event.preventDefault();
+    
+    // Extract card data
+    const button = event.currentTarget;
+    button.disabled = true;
+    const card = button.closest(".chat-card");
+    const messageId = card.closest(".message").dataset.messageId;
+    const message = game.messages.get(messageId);
+
+    // Get the Actor from a synthetic Token
+    const actor = await this._getChatCardActor(card);
+
+  }
+
+  /**
+   * Get the Actor which is the author of a chat card
+   *
+   * @param {HTMLElement} card    The chat card being used
+   * @returns {Actor|null}         The Actor Document or null
+   * @private
+   */
+    static async _getChatCardActor(card) {
+      // Case 1 - a synthetic actor from a Token
+      const tokenUuid = card.dataset.tokenId;
+      if (tokenUuid) {
+        return (await fromUuid(tokenUuid))?.actor;
+      }
+  
+      // Case 2 - use Actor ID directory
+      const actorId = card.dataset.actorId;
+      return game.actors.get(actorId) || null;
+    }
+
+  /* -------------------------------------------- */
+} // Class

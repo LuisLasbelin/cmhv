@@ -65,6 +65,14 @@
             {{/each}}
           {{/select}}
         </select>
+        <label class="resource-label">{{localize 'CMHV.DamageType'}}</label>
+        <select name="data.weaponSize">
+          {{#select data.weaponSize}}
+            {{#each weaponSizes as |name weaponSize|}}
+              <option value="{{ weaponSize }}">{{ localize name }}</option>
+            {{/each}}
+          {{/select}}
+        </select>
       </div>
     </div>
   </section>

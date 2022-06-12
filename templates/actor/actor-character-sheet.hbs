@@ -32,12 +32,13 @@
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.attributes.level.value" class="resource-label">{{localize 'CMHV.Level'}}</label>
+          <label for="data.stamina.value" class="resource-label">{{localize 'CMHV.Kimiya'}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.attributes.level.value" value="{{data.attributes.level.value}}" data-dtype="Number"/>
+          <input type="text" name="data.kimiya.value" value="{{data.kimiya.value}}" data-dtype="Number"/>
+          <span> / </span>
+          <input type="text" name="data.kimiya.max" value="{{data.kimiya.max}}" data-dtype="Number"/>
           </div>
         </div>
-
       </div>
     </div>
   </header>
@@ -70,7 +71,7 @@
             </div>
             {{#each data.build as |build key|}}
             <div class="build flexrow flex-group-center">
-              <label for="data.build.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@build.{{key}}.value" data-label="{{build.label}}"><abbr title="@build.{{key}}.value: {{build.value}}">{{build.label}}</abbr></label>
+              <label for="data.build.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@build.{{key}}.value" data-label="{{build.label}}"><abbr title="@build.{{key}}.value: {{build.value}}">{{build.label}}</abbr></label>
               <input type="text" name="data.build.{{key}}.value" value="{{build.value}}" data-dtype="Number"/>
             </div>
             {{/each}}
@@ -82,8 +83,12 @@
               <input type="text" name="data.defense.value" value="{{data.defense.value}}" data-dtype="String"/>
             </div>
             <div class="build flexrow flex-group-center">
-              <label for="data.dodge" class="resource-label rollable flexlarge align-left" data-roll="d20+@dodge.value" data-label="{{localize 'CMHV.Dodge'}}">{{localize 'CMHV.Dodge'}}</label>
-              <input type="text" name="data.dodge.value" value="{{data.dodge.value}}" data-dtype="Number"/>
+              <label for="data.dodge" class="resource-label rollable flexlarge align-left" data-roll="d10+@dodge.value" data-label="{{localize 'CMHV.Dodge'}}">{{localize 'CMHV.Dodge'}}</label>
+              <input type="text" name="data.dodge.value" value="{{data.dodge.value}}" data-dtype="String"/>
+            </div>
+            <div class="build flexrow flex-group-center">
+              <label for="data.speed" class="resource-label flexlarge align-left" data-label="{{localize 'CMHV.Speed'}}">{{localize 'CMHV.Speed'}} (m)</label>
+              <input type="text" name="data.speed.value" value="{{data.speed.value}}" data-dtype="Number"/>
             </div>
           </div>
         </aside>

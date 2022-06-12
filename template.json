@@ -13,7 +13,26 @@
           "min": 0,
           "max": 10
         },
-        "biography": ""
+        "kimiya": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        },
+        "biography": "",
+        "build": {
+          "body": {
+            "value": 0
+          },
+          "mind": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "will": {
+            "value": 0
+          }
+        }
       },
       "combat": {
         "attack": {
@@ -31,29 +50,10 @@
       }
     },
     "character": {
-      "templates": ["base", "combat"],
-      "attributes": {
-        "level": {
-          "value": 1
-        }
-      },
-      "build": {
-        "body": {
-          "value": 0
-        },
-        "mind": {
-          "value": 0
-        },
-        "skill": {
-          "value": 0
-        },
-        "will": {
-          "value": 0
-        }
-      }
+      "templates": ["base", "combat"]
     },
     "npc": {
-      "templates": ["base"],
+      "templates": ["base", "combat"],
       "cr": 0
     }
   },
@@ -86,7 +86,8 @@
       "templates": ["base", "market"]
     },
     "weapon": {
-      "templates": ["base", "market", "weapon"]
+      "templates": ["base", "market", "weapon"],
+      "weaponSize": "light"
     },
     "armor": {
       "templates": ["base", "market"],
@@ -104,7 +105,8 @@
       "spellLevel": "1",
       "spellDamage": "1d4",
       "spellDomain": "Bless",
-      "damageType": "holy"
+      "spellRange": 0,
+      "cost": 0
     },
     "knowledge": {
       "templates": ["base"],
