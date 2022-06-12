@@ -28,6 +28,6 @@
   "secondaryTokenAttribute": "stamina",
   "url": "https://github.com/Luistorch/cmhv",
   "manifest": "https://github.com/Luistorch/cmhv/blob/master/system.json",
-  "download": "",
+  "download": "https://github.com/Luistorch/cmhv/blob/master/cmhv.rar",
   "license": "https://github.com/Luistorch/cmhv/blob/master/LICENSE.txt"
 }
