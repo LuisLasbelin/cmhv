@@ -2,7 +2,7 @@
   "name": "cmhv",
   "title": "CMHV",
   "description": "The cmhv system for FoundryVTT!",
-  "version": "0.2.22052022",
+  "version": "0.3.12062022",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
   "author": "Luis Lasbelin",

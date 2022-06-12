@@ -50,12 +50,7 @@
       }
     },
     "character": {
-      "templates": ["base", "combat"],
-      "attributes": {
-        "level": {
-          "value": 1
-        }
-      }
+      "templates": ["base", "combat"]
     },
     "npc": {
       "templates": ["base", "combat"],
@@ -91,7 +86,8 @@
       "templates": ["base", "market"]
     },
     "weapon": {
-      "templates": ["base", "market", "weapon"]
+      "templates": ["base", "market", "weapon"],
+      "weaponSize": "light"
     },
     "armor": {
       "templates": ["base", "market"],

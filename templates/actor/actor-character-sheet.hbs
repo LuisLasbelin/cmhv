@@ -8,7 +8,7 @@
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
       use both the "grid" and "grid-Ncol" class where "N" can be any number
       from 1 to 12 and will create that number of columns.  --}}
-      <div class="resources grid grid-4col">
+      <div class="resources grid grid-3col">
 
         {{!-- "flex-group-center" is also defined in the _grid.scss file
         and it will add a small amount of padding, a border, and will
@@ -39,14 +39,6 @@
           <input type="text" name="data.kimiya.max" value="{{data.kimiya.max}}" data-dtype="Number"/>
           </div>
         </div>
-
-        <div class="resource flex-group-center">
-          <label for="data.attributes.level.value" class="resource-label">{{localize 'CMHV.Level'}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.attributes.level.value" value="{{data.attributes.level.value}}" data-dtype="Number"/>
-          </div>
-        </div>
-
       </div>
     </div>
   </header>
@@ -79,7 +71,7 @@
             </div>
             {{#each data.build as |build key|}}
             <div class="build flexrow flex-group-center">
-              <label for="data.build.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@build.{{key}}.value" data-label="{{build.label}}"><abbr title="@build.{{key}}.value: {{build.value}}">{{build.label}}</abbr></label>
+              <label for="data.build.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@build.{{key}}.value" data-label="{{build.label}}"><abbr title="@build.{{key}}.value: {{build.value}}">{{build.label}}</abbr></label>
               <input type="text" name="data.build.{{key}}.value" value="{{build.value}}" data-dtype="Number"/>
             </div>
             {{/each}}
@@ -91,7 +83,7 @@
               <input type="text" name="data.defense.value" value="{{data.defense.value}}" data-dtype="String"/>
             </div>
             <div class="build flexrow flex-group-center">
-              <label for="data.dodge" class="resource-label rollable flexlarge align-left" data-roll="d20+@dodge.value" data-label="{{localize 'CMHV.Dodge'}}">{{localize 'CMHV.Dodge'}}</label>
+              <label for="data.dodge" class="resource-label rollable flexlarge align-left" data-roll="d10+@dodge.value" data-label="{{localize 'CMHV.Dodge'}}">{{localize 'CMHV.Dodge'}}</label>
               <input type="text" name="data.dodge.value" value="{{data.dodge.value}}" data-dtype="String"/>
             </div>
             <div class="build flexrow flex-group-center">

@@ -41,6 +41,12 @@ CMHV.armorType = {
   "shield": "CMHV.ArmorShield"
 }
 
+CMHV.weaponSize = {
+  "light": "CMHV.WeaponLight",
+  "medium": "CMHV.WeaponMedium",
+  "heavy": "CMHV.WeaponHeavy",
+}
+
 CMHV.spellCircle = {
   'Light' : "CMHV.SpellCircleLight",
   'Darkness' : "CMHV.SpellCircleDarkness",

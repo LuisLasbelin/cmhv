@@ -68,8 +68,8 @@ export class CmhvItem extends Item {
       // Retrieve roll data.
       const rollData = this.getRollData();
       // Invoke the roll and submit it to chat.
-      const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.skill.value+ "+" + item.data.precission.value, rollData);
-      chatData.rollPrecissionFormula = `d20 + ${skill} + ${precission}`;
+      const rollPrecission = new Roll("d10+" + this.actor.getRollData().build.skill.value+ "+" + item.data.precission.value, rollData);
+      chatData.rollPrecissionFormula = `d10 + ${skill} + ${precission}`;
       // Damage rolls
       let rollDamage = {};
       // Ranged damage
@@ -126,7 +126,7 @@ export class CmhvItem extends Item {
       // Retrieve roll data.
       const rollData = this.getRollData();
       // Invoke the roll and submit it to chat.
-      const rollPrecission = new Roll("d20+" + this.actor.getRollData().build.will.value, rollData);
+      const rollPrecission = new Roll("d10+" + this.actor.getRollData().build.will.value, rollData);
       const rollDamage = new Roll(item.data.spellDamage, rollData);
 
       chatData.rollDamageJson = rollDamage.toJSON();
@@ -143,6 +143,8 @@ export class CmhvItem extends Item {
       chatData.rollDamage = await rollDamage.roll({ async: true });
 
       chatData.level = item.data.spellLevel;
+
+      console.log(item.data);
 
       // TODO
       // Get the actor kimiya value
